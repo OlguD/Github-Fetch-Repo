@@ -36,7 +36,8 @@ class GitHubRepo():
 
 
 if __name__ == "__main__":
-    github = GitHubRepo()
+    username = str(input("GitHub Username: "))
+    github = GitHubRepo(username)
     work_co = github.fetchRepo()
     print(work_co)
 
