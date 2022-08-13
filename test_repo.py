@@ -1,11 +1,10 @@
 import unittest
 from SeeGitHubRepos import GitHubRepo
 
-git_repo = GitHubRepo()
-github_fetch = git_repo.fetchRepo()
-
 
 class GetRepoTest(unittest.TestCase):
+  
+   
     case_1 = [(1, 'randomDot'),
             (2, 'birthday'),
             (3, 'Facebook-Clone'),
@@ -47,10 +46,15 @@ class GetRepoTest(unittest.TestCase):
             (26, 'mobilegame'),
             (27, 'snake-game'),
             (28, 'articleFocuser')] 
+    
+    def test_1(self):
+        get_repo = GitHubRepo("OlguD")
+        self.assertEqual(get_repo.fetchRepo(), self.case_1)
 
-    def test_repos(self):
-        self.assertEqual(github_fetch, self.case_1)
-        self.assertEqual(github_fetch, self.case_2)
+    def test_2(self):
+        get_repo = GitHubRepo("servetgulnaroglu")
+        self.assertEqual(get_repo.fetchRepo(), self.case_2)
 
-if  __name__ == '__main__':
+
+if __name__ == '__main__':
     unittest.main()

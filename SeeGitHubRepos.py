@@ -3,8 +3,8 @@ import requests
 
 
 class GitHubRepo():
-    def __init__(self):
-        self.username = str(input('Github Username: '))
+    def __init__(self, username):
+        self.username = username
         self.url = f'https://github.com/{self.username}?tab=repositories'
     
     def fetchRepo(self):
