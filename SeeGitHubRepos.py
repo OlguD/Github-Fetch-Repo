@@ -1,6 +1,7 @@
 from bs4 import BeautifulSoup
 import requests
 
+
 class GitHubRepo():
     def __init__(self):
         self.username = str(input('Github Username: '))
@@ -9,12 +10,11 @@ class GitHubRepo():
     def fetchRepo(self):
         global repository
         repository = []
-        html = requests.get(self.url).content
-        soup = BeautifulSoup(html, 'html.parser')
-        for line in soup.findAll("li", {"itemtype" : "http://schema.org/Code"}):
-            for repoLink in line.findAll('a'):
+        html = requests.get(self.url)
+        soup = BeautifulSoup(html.content, 'html.parser')
+        for line in soup.findAll("li", {"itemtype": "http://schema.org/Code"}):
+            for repoLink in line.findAll("a", itemprop="name codeRepository"): 
                 repository.append(repoLink.text)
-
         rep = []
         for x in repository:
             rep.append(x.replace("\n", ""))
@@ -30,9 +30,13 @@ class GitHubRepo():
             pass
         
         print(f"{self.username} Repository")
+        
+        result = [i for i in enumerate(new_REPOSITORY,1)]
+        return result
 
-        for i in enumerate(new_REPOSITORY, 1):
-            print(i)
 
-github = GitHubRepo()
-github.fetchRepo()
+if __name__ == "__main__":
+    github = GitHubRepo()
+    work_co = github.fetchRepo()
+    print(work_co)
+
