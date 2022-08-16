@@ -31,9 +31,8 @@ class GitHubRepo():
         
         print(f"{self.username} Repository")
         
-        result = [i for i in enumerate(new_REPOSITORY,1)]
-        return result
-
+        for k in enumerate(new_REPOSITORY, 1):
+            print(k)
 
 if __name__ == "__main__":
     username = str(input("GitHub Username: "))
