@@ -1,7 +1,6 @@
 from bs4 import BeautifulSoup
 import requests
 
-
 class GitHubRepo():
     def __init__(self, username):
         self.username = username
